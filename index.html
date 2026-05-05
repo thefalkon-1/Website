@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dan Falkenheim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #faf6ec;
+    --ink: #1f1d18;
+    --ink-soft: #4a463d;
+    --ink-mute: #6b6557;
+    --rule: #1f1d18;
+    --rule-soft: #b8b1a1;
+    --accent: #2a2820;
+    --measure: 790px;
+    --measure-wide: 860px;
+    --header-pad: 2px;
+    --body-size: 19px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "EB Garamond", "Adobe Garamond Pro", Garamond, "Times New Roman", serif;
+    font-size: var(--body-size);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "onum";
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ---------- shell ---------- */
+  .page {
+    max-width: var(--measure-wide);
+    margin: 0 auto;
+    padding: 56px 48px 40px;
+  }
+
+  /* ---------- header ---------- */
+  .masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: var(--header-pad);
+    border-bottom: 1px solid var(--rule);
+  }
+  .logo {
+    font-family: "Cormorant Garamond", "EB Garamond", serif;
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: 0.005em;
+    color: var(--ink);
+  }
+  .logo a { display: inline-block; }
+  .nav {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    font-size: 13px;
+    font-variant: small-caps;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+  }
+  .nav a {
+    padding: 0 14px;
+    position: relative;
+  }
+  .nav a + a::before {
+    content: "·";
+    position: absolute;
+    left: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-mute);
+  }
+  .nav a:last-child { padding-right: 0; }
+  .nav a:first-child { padding-left: 0; }
+  .nav a:hover { color: var(--ink); }
+
+  /* ---------- index list ---------- */
+  .post-list {
+    list-style: none;
+    margin: 0;
+    padding: 28px 0 14px;
+  }
+  .post-list li {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    align-items: baseline;
+    column-gap: 18px;
+    padding: 8px 0;
+  }
+  .post-list .date {
+    font-variant: small-caps;
+    font-size: 12.5px;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .post-list .row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .post-list .title {
+    font-size: 19px;
+    color: var(--ink);
+  }
+  .post-list .title:hover { color: #000; }
+  .post-list .leader {
+    flex: 1;
+    border-bottom: 1px dotted transparent;
+    transform: translateY(-3px);
+  }
+
+  /* ---------- centered actions ---------- */
+  .return {
+    text-align: center;
+    margin: 36px 0 44px;
+    font-size: 16px;
+  }
+  .return a {
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+  }
+
+  /* ---------- footer ---------- */
+  .colophon {
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    padding-top: 22px;
+    color: var(--ink-soft);
+  }
+  .colophon .tag {
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+  .colophon .copy {
+    font-size: 14px;
+    margin-top: 6px;
+    color: var(--ink-mute);
+  }
+
+  /* ---------- article ---------- */
+  .article {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding-top: 34px;
+  }
+  .article .stamp {
+    font-variant: small-caps;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .article h1 {
+    font-family: "Cormorant Garamond", "EB Garamond", serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.16;
+    letter-spacing: -0.005em;
+    margin: 0 0 18px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .article .titlerule {
+    width: 56px;
+    height: 0;
+    border-top: 1.5px solid var(--ink);
+    margin: 4px 0 28px;
+  }
+  .article p {
+    margin: 0 0 18px;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  .article blockquote {
+    margin: 22px 0 22px 6px;
+    padding: 2px 0 2px 16px;
+    border-left: 1.5px solid var(--ink);
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+  .article blockquote p { margin: 0; text-align: left; }
+
+  sup.fn {
+    font-size: 0.7em;
+    vertical-align: super;
+    line-height: 0;
+    margin-left: 1px;
+  }
+  sup.fn a { color: var(--ink); }
+
+  .footnotes {
+    margin: 38px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    counter-reset: fn;
+  }
+  .footnotes ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .footnotes li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    column-gap: 6px;
+    margin-bottom: 6px;
+    counter-increment: fn;
+  }
+  .footnotes li::before {
+    content: counter(fn);
+    text-align: right;
+    color: var(--ink-mute);
+  }
+
+  /* ---------- view switching ---------- */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 640px) {
+    .page { padding: 36px 22px 28px; }
+    .logo { font-size: 26px; }
+    .nav { font-size: 11.5px; letter-spacing: 0.12em; }
+    .nav a { padding: 0 8px; }
+    .post-list li { grid-template-columns: 96px 1fr; column-gap: 10px; }
+    .post-list .date { font-size: 11px; letter-spacing: 0.12em; }
+    .post-list .title { white-space: normal; }
+    .article h1 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="masthead">
+      <div class="logo"><a href="#/" data-nav="index">Dan Falkenheim</a></div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#/" data-nav="index">Index</a>
+        <a href="#/writing" data-nav="writing">Writing</a>
+        <a href="#/about" data-nav="about">About</a>
+        <a href="#/rss" data-nav="rss">RSS</a>
+      </nav>
+    </header>
+
+    <!-- ============ INDEX VIEW ============ -->
+    <section class="view view-index" id="view-index">
+      <ul class="post-list">
+        <li>
+          <span class="date">May 4, 2026</span>
+          <span class="row">
+            <a class="title" href="#/post/test-article">A Test Article</a>
+            <span class="leader" aria-hidden="true"></span>
+          </span>
+        </li>
+      </ul>
+
+      <div class="return">
+        <a href="#/" data-nav="index">Return to index&nbsp;↑</a>
+      </div>
+    </section>
+
+    <!-- ============ ARTICLE VIEW ============ -->
+    <section class="view view-article" id="view-article">
+      <article class="article">
+        <div class="stamp">May 4, 2026</div>
+        <h1>A Test Article</h1>
+        <div class="titlerule" aria-hidden="true"></div>
+
+        <p>This is a placeholder article&mdash;a single page of running text used to verify the typography, spacing, and layout of the site. It exists so the index has something to link to, and so the article view has something to render. Real writing will replace it in time.<sup class="fn"><a href="#fn-1">1</a></sup></p>
+
+        <p>The body is set in EB Garamond at a generous line-height, justified with hyphenation enabled. Small-caps date stamps, a short rule beneath the title, and a single accent column define the page. Everything else gets out of the way.</p>
+
+        <blockquote>
+          <p><em>The point of a test article is not to be read, but to be measured.</em><sup class="fn"><a href="#fn-2">2</a></sup></p>
+        </blockquote>
+
+        <p>If you are seeing this, the deployment is working. Click &ldquo;Return to index&rdquo; to go back.</p>
+
+        <section class="footnotes" aria-label="Footnotes">
+          <ol>
+            <li id="fn-1">Placeholder footnote one.</li>
+            <li id="fn-2">Placeholder footnote two.</li>
+          </ol>
+        </section>
+
+        <div class="return">
+          <a href="#/" data-nav="index">Return to index&nbsp;↑</a>
+        </div>
+      </article>
+    </section>
+
+    <footer class="colophon">
+      <div class="tag"></div>
+      <div class="copy">© 2026 Dan Falkenheim</div>
+    </footer>
+
+  </main>
+
+<script>
+  function route() {
+    var hash = location.hash || "#/";
+    var isPost = /^#\/post\//.test(hash);
+    document.getElementById("view-index").classList.toggle("active", !isPost);
+    document.getElementById("view-article").classList.toggle("active", isPost);
+    window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+  }
+  window.addEventListener("hashchange", route);
+  route();
+</script>
+</body>
+</html>
